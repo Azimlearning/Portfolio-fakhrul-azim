@@ -5,7 +5,17 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Points, PointMaterial, PerformanceMonitor } from '@react-three/drei';
 import * as THREE from 'three';
 import { usePortfolioStore } from '@/lib/store';
+import { TIER_STYLES } from '@/lib/tiers';
 import EffectsChain from './EffectsChain';
+
+// Cached MediaQueryList — constructing one via matchMedia() every frame
+// forces style recalc and cripples the frame rate.
+let reducedMq: MediaQueryList | null = null;
+const prefersReducedMotion = () => {
+  if (typeof window === 'undefined') return false;
+  if (!reducedMq) reducedMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  return reducedMq.matches;
+};
 
 const ACCENT = '#e2a648';
 const COOL = '#8fb3d9';
@@ -42,6 +52,7 @@ function Stardust({ count, radius, size, color, opacity, seed }: {
   }, [count, radius, seed]);
 
   useFrame((_, delta) => {
+    if (prefersReducedMotion()) return;
     if (ref.current) ref.current.rotation.y += delta * 0.008;
   });
 
@@ -63,8 +74,13 @@ function Stardust({ count, radius, size, color, opacity, seed }: {
 function Core() {
   const solidRef = useRef<THREE.Mesh>(null);
   const wireRef = useRef<THREE.Mesh>(null);
+  const wireMatRef = useRef<THREE.MeshBasicMaterial>(null);
+  const lightRef = useRef<THREE.PointLight>(null);
+  const groupRef = useRef<THREE.Group>(null);
+  const targetColor = useRef(new THREE.Color(ACCENT));
 
   useFrame((state, delta) => {
+    if (prefersReducedMotion()) return;
     const t = state.clock.elapsedTime;
     if (solidRef.current) {
       solidRef.current.rotation.y += delta * 0.12;
@@ -74,11 +90,29 @@ function Core() {
       wireRef.current.rotation.y -= delta * 0.07;
       wireRef.current.rotation.z = Math.cos(t * 0.11) * 0.12;
     }
+
+    // React to the project card under the visitor's cursor: the shell and
+    // ember light lerp toward the hovered tier's color, and the core swells.
+    const hovered = usePortfolioStore.getState().hoveredTier;
+    targetColor.current.set(hovered ? TIER_STYLES[hovered].hex : ACCENT);
+    const k = 1 - Math.exp(-5 * delta);
+    if (wireMatRef.current) {
+      wireMatRef.current.color.lerp(targetColor.current, k);
+      wireMatRef.current.opacity += ((hovered ? 0.34 : 0.18) - wireMatRef.current.opacity) * k;
+    }
+    if (lightRef.current) {
+      lightRef.current.color.lerp(targetColor.current, k);
+      lightRef.current.intensity += ((hovered ? 7 : 4) - lightRef.current.intensity) * k;
+    }
+    if (groupRef.current) {
+      const s = groupRef.current.scale.x + ((hovered ? 1.08 : 1) - groupRef.current.scale.x) * k;
+      groupRef.current.scale.setScalar(s);
+    }
   });
 
   return (
     <Float speed={1.1} rotationIntensity={0.15} floatIntensity={0.5} floatingRange={[-0.15, 0.15]}>
-      <group>
+      <group ref={groupRef}>
         {/* Faceted dark core */}
         <mesh ref={solidRef}>
           <icosahedronGeometry args={[1.35, 1]} />
@@ -95,11 +129,11 @@ function Core() {
         {/* Glowing wireframe shell — bloom feeds on this */}
         <mesh ref={wireRef} scale={1.55}>
           <icosahedronGeometry args={[1.35, 1]} />
-          <meshBasicMaterial color={ACCENT} wireframe transparent opacity={0.18} />
+          <meshBasicMaterial ref={wireMatRef} color={ACCENT} wireframe transparent opacity={0.18} />
         </mesh>
 
         {/* Inner ember light */}
-        <pointLight color={ACCENT} intensity={4} distance={9} decay={2} />
+        <pointLight ref={lightRef} color={ACCENT} intensity={4} distance={9} decay={2} />
       </group>
     </Float>
   );
@@ -177,6 +211,7 @@ function CameraRig() {
   const target = useRef({ rotY: 0, camY: 0.3, camX: 0, lookY: 0 });
 
   useFrame((state, delta) => {
+    if (prefersReducedMotion()) return;
     const scroll = usePortfolioStore.getState().scrollProgress;
     const pointer = state.pointer;
     const t = target.current;

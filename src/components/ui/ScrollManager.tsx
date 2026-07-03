@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { usePortfolioStore } from '@/lib/store';
 
-const SECTION_IDS = ['hero', 'about', 'projects', 'leadership', 'experience', 'education', 'contact'];
+const SECTION_IDS = ['hero', 'about', 'experience', 'projects', 'leadership', 'education', 'contact'];
 
 export default function ScrollManager() {
   const setScrollProgress = usePortfolioStore((s) => s.setScrollProgress);

@@ -7,6 +7,8 @@ export interface DateRange {
   expected?: boolean;       // future date marker
 }
 
+export type ProjectOrigin = 'internship' | 'utp' | 'hackathon' | 'personal';
+
 export interface Project {
   id: string;               // 'prj-XXX'
   slug: string;             // kebab-case URL segment
@@ -14,6 +16,8 @@ export interface Project {
   tagline: string;
   tier: Tier;
   status: Status;
+  /** Where the project came from — drives the filter tabs in ProjectsSection */
+  origin: ProjectOrigin;
   featured: boolean;
   dateRange: DateRange;
   role: string;
@@ -123,7 +127,12 @@ export interface Skill {
 
 export interface Strength {
   name: string;
-  score: number;            // 0-100 for stat bar
+  score: number;            // 0-100 (legacy; UI now shows evidence counts instead)
+  /** Matched against project name/category/tech to count supporting work.
+      Keywords of 1–2 chars require an exact techStack token match. */
+  keywords?: string[];
+  /** Where the supporting evidence lives */
+  evidence?: 'projects' | 'leadership';
 }
 
 export interface Reference {

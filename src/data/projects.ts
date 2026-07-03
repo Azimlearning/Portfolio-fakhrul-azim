@@ -3,6 +3,7 @@ import type { Project } from '@/types/portfolio';
 export const projects: Project[] = [
   {
     id: 'prj-001',
+    origin: 'internship',
     slug: 'vera-ai',
     name: 'VERA-AI',
     tagline: 'Enterprise-grade RAG-powered AI assistant for PETRONAS Upstream.',
@@ -29,6 +30,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-002',
+    origin: 'internship',
     slug: 'petronas-systemic-shifts-microsite',
     name: 'PETRONAS Upstream Systemic Shifts Microsite',
     tagline: 'Modern AI-integrated corporate microsite for PETRONAS Upstream.',
@@ -55,6 +57,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-003',
+    origin: 'personal',
     slug: 'crowd-view-ai',
     name: 'Crowd-View-AI',
     tagline: 'Real-time venue intelligence — seat occupancy and crowd flow analytics.',
@@ -81,6 +84,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-004',
+    origin: 'hackathon',
     slug: 'only-volunteer',
     name: 'OnlyVolunteer',
     tagline: 'AI-powered volunteer & aid management platform.',
@@ -107,6 +111,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-005',
+    origin: 'internship',
     slug: 'powerpoint-automation-suite',
     name: 'PowerPoint Automation Suite',
     tagline: 'Python tool extracting PowerPoint structures to formatted Excel reports.',
@@ -133,6 +138,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-006',
+    origin: 'utp',
     slug: 'dbms-java-oop',
     name: 'Database Management System (Java OOP)',
     tagline: 'Database management system applying OOP fundamentals.',
@@ -159,6 +165,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-007',
+    origin: 'utp',
     slug: 'online-store-cpp',
     name: 'Online Store System (C++)',
     tagline: 'C++ store system covering products, orders, and authentication.',
@@ -185,6 +192,7 @@ export const projects: Project[] = [
   },
   {
     id: 'prj-008',
+    origin: 'utp',
     slug: 'ds-recommendation-r',
     name: 'Data Science Analysis & Recommendation System (R)',
     tagline: 'Data-driven recommendation system covering statistical modeling in R.',

@@ -11,7 +11,7 @@ export default function ExperienceSection() {
     <section id="experience" className="w-full py-28 md:py-36">
       <div className="section-shell">
         <div className="max-w-[900px]">
-          <SectionHeader kicker="04 — Experience">
+          <SectionHeader kicker="02 — Experience">
             Where I&apos;ve worked.
           </SectionHeader>
 

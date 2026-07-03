@@ -4,6 +4,8 @@ import React from 'react';
 import { ArrowUpRight, Cpu, Globe, Eye, Code, Database, BarChart2, Users, Settings, HelpCircle } from 'lucide-react';
 import type { Project } from '@/types/portfolio';
 import Card from '../ui/Card';
+import { TIER_STYLES } from '@/lib/tiers';
+import { usePortfolioStore } from '@/lib/store';
 import { playClickSound } from '@/lib/sound';
 
 interface ProjectCardProps {
@@ -27,48 +29,51 @@ export function getProjectIcon(iconName: string, size = 20) {
   }
 }
 
-const TIER_TAG: Record<string, string | null> = {
-  legendary: 'Flagship',
-  epic: 'Major build',
-  rare: null,
-  common: null,
-};
-
 export default function ProjectCard({ project, onSelect, size = 'compact' }: ProjectCardProps) {
+  const setHoveredTier = usePortfolioStore((s) => s.setHoveredTier);
+  const tier = TIER_STYLES[project.tier];
+  const isLarge = size === 'large';
+
   const handleOpen = () => {
     playClickSound();
     onSelect(project);
   };
 
-  const tag = TIER_TAG[project.tier];
-  const isLarge = size === 'large';
-
   return (
     <Card
       interactive
       onClick={handleOpen}
+      onMouseEnter={() => setHoveredTier(project.tier)}
+      onMouseLeave={() => setHoveredTier(null)}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleOpen()}
       className={`group flex flex-col cursor-pointer h-full ${isLarge ? 'p-8 md:p-10' : 'p-6'}`}
+      // The spotlight border and hover accents inherit the tier color
+      style={{ '--accent-line': tier.line } as React.CSSProperties}
     >
       <div className="flex items-start justify-between mb-6">
         <div
-          className={`rounded-xl border border-[var(--border)] bg-[var(--accent-dim)] text-[var(--accent)] flex items-center justify-center ${
+          className={`rounded-xl border flex items-center justify-center ${
             isLarge ? 'w-13 h-13 p-3.5' : 'w-11 h-11 p-3'
           }`}
+          style={{ background: tier.dim, borderColor: tier.line, color: tier.color }}
         >
           {getProjectIcon(project.icon, isLarge ? 22 : 18)}
         </div>
         <div className="flex items-center gap-2.5">
-          {tag && (
-            <span className="text-[11px] tracking-[0.08em] uppercase text-[var(--accent)] border border-[var(--accent-line)] rounded-md px-2 py-1">
-              {tag}
+          {tier.label && (
+            <span
+              className="text-[11px] tracking-[0.08em] uppercase rounded-md px-2 py-1 border"
+              style={{ color: tier.color, borderColor: tier.line }}
+            >
+              {tier.label}
             </span>
           )}
           <ArrowUpRight
             size={17}
-            className="text-[var(--text-faint)] transition-all duration-300 group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="text-[var(--text-faint)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            style={{ transitionProperty: 'transform, color' }}
           />
         </div>
       </div>

@@ -44,13 +44,15 @@ export default function EducationCard({ education }: EducationCardProps) {
         </div>
       </div>
 
-      <div className="mt-5 pt-4 border-t border-[var(--border)] flex items-baseline justify-between">
-        <span className="text-[13px] text-[var(--text-faint)]">CGPA</span>
-        <span className="font-display font-semibold text-lg text-[var(--text)] tabular">
-          {education.gpa}
-          <span className="text-[13px] text-[var(--text-faint)] font-normal"> / {education.gpaScale}</span>
-        </span>
-      </div>
+      {typeof education.gpa === 'number' && (
+        <div className="mt-5 pt-4 border-t border-[var(--border)] flex items-baseline justify-between">
+          <span className="text-[13px] text-[var(--text-faint)]">CGPA</span>
+          <span className="font-display font-semibold text-lg text-[var(--text)] tabular">
+            {education.gpa}
+            <span className="text-[13px] text-[var(--text-faint)] font-normal"> / {education.gpaScale}</span>
+          </span>
+        </div>
+      )}
     </Card>
   );
 }

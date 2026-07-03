@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { playClickSound } from '@/lib/sound';
 import type { Tier } from '@/types/portfolio';
+import { TIER_STYLES } from '@/lib/tiers';
 
 interface InventoryModalProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ interface InventoryModalProps {
 export default function InventoryModal({
   isOpen,
   onClose,
+  tier,
   title,
   subtitle,
   icon,
@@ -29,6 +31,7 @@ export default function InventoryModal({
   metrics = [],
   footerAction,
 }: InventoryModalProps) {
+  const tierStyle = TIER_STYLES[tier] ?? TIER_STYLES.common;
   const handleClose = () => {
     playClickSound();
     onClose();
@@ -62,11 +65,16 @@ export default function InventoryModal({
             onClick={(e) => e.stopPropagation()}
             className="glass w-full max-w-[520px] p-7 sm:p-9 relative overflow-hidden"
           >
-            {/* Ambient accent wash */}
+            {/* Ambient wash + top hairline in the tier color */}
             <div
               aria-hidden
               className="absolute -top-24 -right-24 w-64 h-64 rounded-full pointer-events-none"
-              style={{ background: 'radial-gradient(circle, var(--accent-dim), transparent 70%)' }}
+              style={{ background: `radial-gradient(circle, ${tierStyle.dim}, transparent 70%)` }}
+            />
+            <div
+              aria-hidden
+              className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+              style={{ background: `linear-gradient(90deg, transparent, ${tierStyle.color}, transparent)`, opacity: 0.6 }}
             />
 
             <button
@@ -78,13 +86,26 @@ export default function InventoryModal({
             </button>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-xl border border-[var(--border)] bg-[var(--accent-dim)] text-[var(--accent)] flex items-center justify-center shrink-0">
+              <div
+                className="w-12 h-12 rounded-xl border flex items-center justify-center shrink-0"
+                style={{ background: tierStyle.dim, borderColor: tierStyle.line, color: tierStyle.color }}
+              >
                 {icon}
               </div>
               <div className="min-w-0">
-                <h4 className="font-display font-semibold text-xl leading-tight text-[var(--text)]">
-                  {title}
-                </h4>
+                <div className="flex items-center gap-2.5">
+                  <h4 className="font-display font-semibold text-xl leading-tight text-[var(--text)]">
+                    {title}
+                  </h4>
+                  {tierStyle.label && (
+                    <span
+                      className="text-[10.5px] tracking-[0.08em] uppercase rounded-md px-1.5 py-0.5 border shrink-0"
+                      style={{ color: tierStyle.color, borderColor: tierStyle.line }}
+                    >
+                      {tierStyle.label}
+                    </span>
+                  )}
+                </div>
                 {subtitle && <p className="text-sm text-[var(--text-soft)] mt-0.5 truncate">{subtitle}</p>}
               </div>
             </div>

@@ -9,7 +9,7 @@ interface CertCardProps {
 
 export default function CertCard({ certificate }: CertCardProps) {
   return (
-    <Card className="p-6 flex flex-col h-full">
+    <Card interactive className="p-6 flex flex-col h-full">
       <div className="flex items-start justify-between gap-3 mb-4">
         <div className="w-10 h-10 rounded-xl border border-[var(--border)] bg-[var(--accent-dim)] text-[var(--accent)] flex items-center justify-center shrink-0">
           <Award size={17} strokeWidth={1.6} />
