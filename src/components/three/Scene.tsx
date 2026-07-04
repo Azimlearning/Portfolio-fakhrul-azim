@@ -2,7 +2,7 @@
 
 import React, { useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Points, PointMaterial, PerformanceMonitor } from '@react-three/drei';
+import { Float, Points, PointMaterial, PerformanceMonitor, Environment, Lightformer } from '@react-three/drei';
 import * as THREE from 'three';
 import { usePortfolioStore } from '@/lib/store';
 import { TIER_STYLES } from '@/lib/tiers';
@@ -113,16 +113,17 @@ function Core() {
   return (
     <Float speed={1.1} rotationIntensity={0.15} floatIntensity={0.5} floatingRange={[-0.15, 0.15]}>
       <group ref={groupRef}>
-        {/* Faceted dark core */}
+        {/* Faceted dark core — env-map reflections give it a real metal read */}
         <mesh ref={solidRef}>
           <icosahedronGeometry args={[1.35, 1]} />
           <meshStandardMaterial
             color="#141b2c"
-            roughness={0.25}
-            metalness={0.85}
+            roughness={0.16}
+            metalness={0.92}
             flatShading
             emissive="#1b2438"
-            emissiveIntensity={0.35}
+            emissiveIntensity={0.3}
+            envMapIntensity={1.3}
           />
         </mesh>
 
@@ -271,16 +272,32 @@ export default function Scene() {
         />
 
         <color attach="background" args={[BG]} />
-        <fog attach="fog" args={[BG, 10, 32]} />
+        <fog attach="fog" args={[BG, 9, 30]} />
 
         <ambientLight intensity={0.25} color={COOL} />
         <directionalLight position={[6, 8, 4]} intensity={1.6} color="#f3e2c0" />
         <pointLight position={[-8, -4, -6]} intensity={2.5} color="#31507e" distance={30} />
 
+        {/* Local lightformer environment (no network fetch) — reflected by
+            every metallic surface; generated once (frames={1}) so it's cheap */}
+        <Environment resolution={256} frames={1}>
+          <Lightformer form="rect" intensity={2.2} color="#f0c987" position={[5, 4, 3]} scale={[4, 2, 1]} />
+          <Lightformer form="rect" intensity={1.1} color="#4a6fa5" position={[-6, -2, -3]} scale={[5, 3, 1]} />
+          <Lightformer form="ring" intensity={0.9} color="#dfe8f5" position={[0, 6, 0]} scale={3} />
+        </Environment>
+
         <CameraRig />
 
         <Stardust count={degraded ? 900 : 1600} radius={26} size={0.045} color={COOL} opacity={0.55} seed={42} />
         <Stardust count={350} radius={14} size={0.06} color={ACCENT} opacity={0.4} seed={7} />
+
+        {/* Near-field dust drifting in front of the focus plane — DoF blurs it
+            into soft bokeh, selling depth. Pointless without DoF, so high only */}
+        {!degraded && (
+          <group position={[0, 0, 6]}>
+            <Stardust count={140} radius={4} size={0.12} color="#c9d6ea" opacity={0.22} seed={99} />
+          </group>
+        )}
 
         {/* In low mode skip postprocessing entirely — emissive materials and
             additive points carry the glow on their own */}

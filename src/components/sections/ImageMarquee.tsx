@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { projects } from '@/data/projects';
 import { roles } from '@/data/roles';
+import { events } from '@/data/events';
 import { TIER_STYLES } from '@/lib/tiers';
 import type { Tier } from '@/types/portfolio';
 
@@ -82,7 +83,15 @@ export default function ImageMarquee() {
     tier: r.tier,
   }));
 
-  const mixed = [...projectTiles.slice(0, 4), ...roleTiles.slice(3)].reverse();
+  const eventTiles: TileData[] = events.map((e) => ({
+    key: e.id,
+    label: e.name,
+    sub: e.organizer,
+    cover: e.media.cover,
+    tier: e.role === 'hicom' ? 'legendary' : e.role === 'committee' ? 'epic' : e.role === 'competitor' ? 'rare' : 'common',
+  }));
+
+  const mixed = [...eventTiles, ...projectTiles.slice(0, 2)].reverse();
 
   return (
     <section aria-label="Work in pictures" className="w-full py-10 md:py-14 space-y-4">

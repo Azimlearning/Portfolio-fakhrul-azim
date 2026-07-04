@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, MapPin, Users, CalendarRange, Trophy } from 'lucide-react';
+import { ArrowLeft, MapPin, Users, CalendarRange, Trophy, FileBadge } from 'lucide-react';
 import type { Role } from '@/types/portfolio';
 import Card from '../ui/Card';
 import Reveal from '../ui/Reveal';
@@ -80,15 +80,30 @@ export default function RoleDetail({ role }: RoleDetailProps) {
               </div>
             )}
 
-            {role.links.site && (
-              <a
-                href={role.links.site}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost mt-10"
-              >
-                Visit organization
-              </a>
+            {(role.links.site || role.links.certificate) && (
+              <div className="flex flex-wrap gap-3 mt-10">
+                {role.links.site && (
+                  <a
+                    href={role.links.site}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost"
+                  >
+                    Visit organization
+                  </a>
+                )}
+                {role.links.certificate && (
+                  <a
+                    href={encodeURI(role.links.certificate)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost"
+                  >
+                    <FileBadge size={15} />
+                    View certificate
+                  </a>
+                )}
+              </div>
             )}
           </Card>
         </Reveal>

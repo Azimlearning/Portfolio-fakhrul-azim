@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowUpRight, Cpu, Globe, Eye, Code, Database, BarChart2, Users, Settings, HelpCircle } from 'lucide-react';
+import { ArrowUpRight, Cpu, Globe, Eye, Code, Database, BarChart2, Users, Settings, HelpCircle, Network, Hammer, HeartPulse } from 'lucide-react';
 import type { Project } from '@/types/portfolio';
 import Card from '../ui/Card';
 import { TIER_STYLES } from '@/lib/tiers';
@@ -25,6 +25,9 @@ export function getProjectIcon(iconName: string, size = 20) {
     case 'chart':      return <BarChart2 {...props} />;
     case 'database':   return <Database {...props} />;
     case 'handshake':  return <HelpCircle {...props} />;
+    case 'network':    return <Network {...props} />;
+    case 'hammer':     return <Hammer {...props} />;
+    case 'heart-pulse': return <HeartPulse {...props} />;
     default:           return <Code {...props} />;
   }
 }

@@ -83,7 +83,7 @@ export default function ProjectsSection() {
   );
 
   return (
-    <section id="projects" className="w-full py-28 md:py-36">
+    <section id="projects" className="w-full py-20 md:py-28">
       <div className="section-shell">
         <SectionHeader
           kicker="03 — Projects"

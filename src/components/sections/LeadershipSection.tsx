@@ -8,7 +8,7 @@ import Reveal from '../ui/Reveal';
 
 export default function LeadershipSection() {
   return (
-    <section id="leadership" className="relative w-full py-28 md:py-36">
+    <section id="leadership" className="relative w-full py-20 md:py-28">
       <div className="section-shell relative">
         <SectionHeader
           kicker="04 — Leadership"

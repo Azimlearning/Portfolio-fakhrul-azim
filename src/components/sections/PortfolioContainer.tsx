@@ -13,6 +13,8 @@ import ToolsMarquee from './ToolsMarquee';
 import ImageMarquee from './ImageMarquee';
 import ProjectsSection from './ProjectsSection';
 import LeadershipSection from './LeadershipSection';
+import EventsSection from './EventsSection';
+import SideRails from '../ui/SideRails';
 import ExperienceSection from './ExperienceSection';
 import EducationSection from './EducationSection';
 import CertificatesSection from './CertificatesSection';
@@ -53,6 +55,7 @@ export default function PortfolioContainer() {
       {!bootComplete && <BootScreen onComplete={() => setBootComplete(true)} />}
 
       <TopBar />
+      <SideRails />
 
       <main className="relative z-10 w-full flex flex-col">
         <Hero />
@@ -65,6 +68,7 @@ export default function PortfolioContainer() {
         {/* Visual breather: photo rows drifting in alternating directions */}
         <ImageMarquee />
         <LeadershipSection />
+        <EventsSection />
         <EducationSection />
         <CertificatesSection />
         <Contact />

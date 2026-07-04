@@ -44,7 +44,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative w-full py-28 md:py-36">
+    <section id="about" className="relative w-full py-20 md:py-28">
       {/* Legibility scrim behind prose */}
       <div
         aria-hidden

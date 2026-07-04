@@ -7,4 +7,9 @@ export const highlights: string[] = [
   'PETRONAS Upstream intern (2025) — AI, automation, data viz',
   'UTP National stage rep — SUKIPT 2024',
   'Stack: Python · RAG · Power BI · Next.js · YOLO · Gemini',
+  'Built Synapse — adaptive AI science tutor for hackAstone 2026',
+  'Arcana — graph-native multi-agent research platform (FYP)',
+  'Silver Award, InnoFest 2023 — "Car Fumes Pencil" carbon-reuse concept',
+  'UMHackathon 2026 Final Round finalist — Buildora, Team Dang Wangi',
+  'National Deep Tech Challenge 2026 entrant — GlucoLens',
 ];

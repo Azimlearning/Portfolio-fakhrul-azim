@@ -45,10 +45,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="w-full py-28 md:py-36">
+    <section id="contact" className="w-full py-20 md:py-28">
       <div className="section-shell">
         <SectionHeader
-          kicker="07 — Contact"
+          kicker="08 — Contact"
           sub="Reach me directly on any channel, or drop a message straight to my inbox."
         >
           Let&apos;s talk.

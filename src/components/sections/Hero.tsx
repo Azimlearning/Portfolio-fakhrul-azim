@@ -57,7 +57,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="display-xl text-5xl sm:text-7xl md:text-[86px] mb-8">
+          <h1 className="display-xl text-4xl sm:text-6xl md:text-[70px] mb-7">
             {/* Staggered two-line reveal */}
             {/* Solid colors, not gradient text: background-clip:text can't paint
                 through the transformed per-character spans KineticText uses */}
@@ -87,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6, ease: EASE }}
-            className="max-w-[54ch] text-base md:text-lg leading-relaxed text-[var(--text-soft)] mb-10"
+            className="max-w-[54ch] text-[15px] md:text-base leading-relaxed text-[var(--text-soft)] mb-9"
           >
             I&apos;m {identity.nameDisplay} — a final-year Computer Science student who builds
             AI assistants, automation pipelines, and data systems that replace hours of manual
@@ -118,7 +118,7 @@ export default function Hero() {
           >
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="font-display font-semibold text-2xl sm:text-3xl text-[var(--text)]">
+                <div className="font-display font-semibold text-xl sm:text-2xl text-[var(--text)]">
                   <CountUp value={s.value} />
                 </div>
                 <div className="text-[13px] text-[var(--text-faint)] mt-1">{s.label}</div>

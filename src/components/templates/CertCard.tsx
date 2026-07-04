@@ -14,12 +14,12 @@ export default function CertCard({ certificate }: CertCardProps) {
         <div className="w-10 h-10 rounded-xl border border-[var(--border)] bg-[var(--accent-dim)] text-[var(--accent)] flex items-center justify-center shrink-0">
           <Award size={17} strokeWidth={1.6} />
         </div>
-        {certificate.credentialUrl && (
+        {(certificate.credentialUrl || certificate.file) && (
           <a
-            href={certificate.credentialUrl}
+            href={certificate.credentialUrl ?? encodeURI(certificate.file!)}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Verify ${certificate.name}`}
+            aria-label={`View ${certificate.name}`}
             className="text-[var(--text-faint)] hover:text-[var(--accent)] transition-colors p-1.5"
           >
             <ExternalLink size={14} />
@@ -30,12 +30,16 @@ export default function CertCard({ certificate }: CertCardProps) {
       <h4 className="font-display font-medium text-[15.5px] text-[var(--text)] leading-snug mb-1.5 flex-1">
         {certificate.name}
       </h4>
-      <p className="text-[13.5px] text-[var(--text-soft)]">{certificate.issuer}</p>
+      {certificate.issuer && (
+        <p className="text-[13.5px] text-[var(--text-soft)]">{certificate.issuer}</p>
+      )}
 
-      <div className="mt-4 pt-3.5 border-t border-[var(--border)] flex justify-between items-center">
-        <span className="text-[12.5px] text-[var(--text-faint)]">Issued</span>
-        <span className="text-[13px] text-[var(--text-soft)] tabular">{certificate.dateIssued}</span>
-      </div>
+      {certificate.dateIssued && (
+        <div className="mt-4 pt-3.5 border-t border-[var(--border)] flex justify-between items-center">
+          <span className="text-[12.5px] text-[var(--text-faint)]">Issued</span>
+          <span className="text-[13px] text-[var(--text-soft)] tabular">{certificate.dateIssued}</span>
+        </div>
+      )}
     </Card>
   );
 }

@@ -1,5 +1,6 @@
 import type { Role } from '@/types/portfolio';
 
+// Order matches the doc's leadership_list_order (§12): tier desc, then date.
 export const roles: Role[] = [
   {
     id: 'ldr-001',
@@ -8,9 +9,9 @@ export const roles: Role[] = [
     position: 'Secretary (High Committee)',
     tier: 'legendary',
     featured: true,
-    dateRange: { start: '2024-04', end: '2024-08' },
+    dateRange: { start: '2024-05', end: '2024-08' },
     scope: '20 committees, 10 days in Osaka',
-    description: 'Managed communication and documentation as a high-committee member, coordinating between 20 committees, UTP management, Osaka universities, corporate sponsors, and Japan Da\'wah Centre. Supervised the protocol department to ensure smooth on-the-ground execution of the 10-day event.',
+    description: 'Managed communication and documentation as a high-committee member, coordinating between 20 committees, UTP management, Osaka universities, corporate sponsors, and Japan Da\'wah Centre. Supervised the protocol department to ensure smooth on-the-ground execution of the 10-day event. The on-the-ground program ran August 19–29, 2024.',
     highlights: [
       'Coordinated between UTP management, Osaka universities, and Japan Da\'wah Centre',
       'Supervised protocol department for 10-day overseas event coordination',
@@ -39,12 +40,13 @@ export const roles: Role[] = [
     featured: true,
     dateRange: { start: '2024-05', end: '2025-01' },
     scope: '100+ members, 10+ events',
-    description: 'Led UTP Griffin Esports Club — restructured operations across three departments, secured RM20,000+ in sponsorships, and institutionalized processes that had previously been informal. Delivered 10+ competitive and recruitment events, raising club visibility regionally and nationally. Led UTP\'s representation at SUKIPT 2024 (national stage) and spearheaded Convocyber 2024 — a 52-team nationwide MLBB tournament generating RM5,000+ sponsorships and an RM3,500 prize pool.',
+    description: 'Led UTP Griffin Esports Club — restructured operations across three departments, secured RM20,000+ in sponsorships, and institutionalized processes that had previously been informal. Delivered 10+ competitive and recruitment events, raising club visibility regionally and nationally. Led UTP\'s representation at SUKIPT 2024 (national stage) and spearheaded Convocyber 2024 — a 52-team nationwide MLBB tournament generating RM5,000+ sponsorships and an RM3,500 prize pool. Progression at Griffin: Committee Member, Team Management (Sep 2023–Jan 2024) → Head of Department, Event Management (Jan–May 2024) → President (May 2024–Jan 2025).',
     highlights: [
-      'Restructured operations across three distinct active departments',
-      'Spearheaded Convocyber 2024 (52-team national tournament, RM3,500 prize pool)',
-      'Secured RM20,000+ in sponsorships for club events',
-      'Led UTP national esports representation at SUKIPT 2024'
+      'SUKIPT 2024 national-stage representation — UTP MLBB team secured silver medals, Sept 11–14, 2024',
+      'Convocyber 2024 — Project Director. Oct 3–6, 2024, team of 22, 52 teams, RM5,000+ sponsorship, RM3,500 prize pool',
+      '3-department restructure across the club',
+      'Griffin Campus Clash — Project Director, May 17–19, 2024. 3-day offline tournament (Tekken 8 + MLBB), team of 13',
+      'Mobile Legends Championship Weekend — first-ever Project Director role, Mar 8–9, 2024. 16 teams, 80+ participants, fully online'
     ],
     icon: 'trophy',
     location: 'UTP, Seri Iskandar',
@@ -66,13 +68,15 @@ export const roles: Role[] = [
     position: 'Assistant Head of Department, Event Management',
     tier: 'epic',
     featured: true,
-    dateRange: { start: '2024-05', end: '2025-02' },
+    dateRange: { start: '2024-02', end: '2025-02' },
     scope: '35 committee members',
-    description: 'Coordinated event-management arm of GDSC-UTP: workshop programming, recruitment pipelines, cross-club collaborations. Acted as Project Director for GDSC Kickoff × Family Day 2024 — led 17 committee members to deliver the chapter\'s large-scale onboarding event.',
+    description: 'Coordinated event-management arm of GDSC-UTP: workshop programming, recruitment pipelines, cross-club collaborations. Acted as Project Director for GDSC Kickoff × Family Day 2024 (June 12, 2024) — led 17 committee members across 4 departments to deliver the chapter\'s large-scale onboarding event.',
     highlights: [
-      'Project Director for GDSC Kickoff × Family Day 2024 onboarding event',
-      'Supervised 35 committee members across workshops and development drives',
-      'Coordinated cross-club programming and recruitment pipelines'
+      'Supervisor, Kickoff & Recruitment Drive (Jan 2025)',
+      'Supervisor, Training of Trainers — Event Management (Nov 17, 2024) — team of 4, 30+ participants',
+      'Supervisor, Training of Trainers — Creative Development (Nov 20, 2024) — Photoshop/Canva skills',
+      'Committee Member, Ceremony & Protocol — VB.NET Workshop (Jun 21–22, 2024) and Flutter Firebase Workshop (May 31–Jun 2, 2024)',
+      'Committee Member, Ceremony & Protocol — Git/GitHub Workshop (Feb 8, 2024)'
     ],
     icon: 'code',
     location: 'UTP, Seri Iskandar',
@@ -94,7 +98,7 @@ export const roles: Role[] = [
     featured: true,
     dateRange: { start: '2024-08', end: '2024-11' },
     scope: '30 team members, 24 teams',
-    description: 'Led a 30-person team to organize the Celcomdigi Esports Battle Arena — a two-phase offline-then-online MLBB tournament with 24 teams. Owned sponsorship outreach, event streaming, logistics, and overall execution end-to-end.',
+    description: 'Led a 30-person team to organize the Celcomdigi Esports Battle Arena — a two-phase offline-then-online MLBB tournament with 24 teams. Owned sponsorship outreach, event streaming, logistics, and overall execution end-to-end. The live event ran Nov 2–6, 2024 (Online Group Stages Nov 2–3, Offline Finals Nov 6 at Block B, UTP), with 30 committee members split across 5 departments — Logistics, Media & Promotion, Public Relations, Ceremony & Protocol, Broadcast & Production.',
     highlights: [
       'Project Director leading a 30-person core organizational team',
       'Secured RM10,000 in corporate sponsorship from CelcomDigi',
@@ -122,11 +126,10 @@ export const roles: Role[] = [
     featured: true,
     dateRange: { start: '2024-05', end: '2024-12' },
     scope: '20 committee members, 5 events',
-    description: 'Assistant Head of the Activity & Welfare department at UTP CYBERHAX, the campus cybersecurity club. Assisted in leading the Cyber Skill Level-Up @ Flag Dive Workshop — a hands-on cybersecurity training event with a 20-member execution team.',
+    description: 'Assistant Head of the Activity & Welfare department at UTP CYBERHAX, the campus cybersecurity club. Assisted in leading the Cyber Skill Level-Up @ Flag Dive Workshop (July 13, 2024, with RE:HACK and HIBISCUS LAB) — a hands-on cybersecurity training event with a 20-member execution team across 4 departments, covering Cryptography, Steganography, Digital Forensics, Web Security, OSINT, and CTF challenges.',
     highlights: [
-      'Delivered 5 active hackathons, Capture-The-Flag (CTF) meets, and workshops',
-      'Assisted leading the Cyber Skill Level-Up @ Flag Dive Workshop',
-      'Coordinated welfare and logistics for a 20-member committee'
+      'Assistant Project Director, Cyber Skill Level-Up @ Flag Dive Workshop (Jul 13, 2024)',
+      'Supervisor, Firmus Field Trip (Sep 4, 2024) — team of 4, company visit to cybersecurity firm Firmus'
     ],
     icon: 'lock',
     location: 'UTP, Seri Iskandar',
@@ -141,6 +144,84 @@ export const roles: Role[] = [
     },
   },
   {
+    id: 'ldr-011',
+    slug: 'asean-student-mobility-2025',
+    organization: 'UTP ASEAN Student Association (UTP-ASA)',
+    position: 'Ceremony & Protocol (CNP) Committee Member',
+    tier: 'rare',
+    featured: true,
+    dateRange: { start: '2025-02', end: '2025-02' },
+    scope: '5-day international exchange program',
+    description: 'Emcee and youth-dialogue coordinator for a 5-day ASEAN student exchange program (Feb 19–23, 2025), hosting students from Indonesia, Thailand, Vietnam, Myanmar, Cambodia, and the Philippines. Part of the broader ASEAN Universities Exhibition and Forum 2025 (AEF2025).',
+    highlights: [
+      'Gala Dinner Emcee — drafted the script and hosted the night',
+      'Youth Dialogue Coordinator — invited speakers for a panel on ASEAN youth and sustainability',
+      'CSR activity support at Salvation Army, and city-tour guide for international students in Ipoh and KL'
+    ],
+    icon: 'globe',
+    location: 'UTP, Seri Iskandar',
+    teamSize: null,
+    durationEvent: '5 days',
+    event_type: 'International student exchange program',
+    links: {
+      site: null,
+    },
+    media: {
+      cover: '/media/leadership/asean-student-mobility-2025/cover.png',
+      gallery: [],
+    },
+  },
+  {
+    id: 'ldr-012',
+    slug: 'convofest-2024-gnc',
+    organization: 'Universiti Teknologi PETRONAS',
+    position: 'Games and Competition (GNC) Committee Member',
+    tier: 'rare',
+    featured: true,
+    dateRange: { start: '2024-10', end: '2024-10' },
+    scope: '15-person high committee',
+    description: 'CONVOFEST 2024 (Oct 26–28, 2024) drew 2,000+ UTP students. As part of a 15-person GNC high-committee, ran operations for the MiniCyber 2024 booth end-to-end (setup through execution) and handled internal communication and cross-committee promotion.',
+    highlights: [
+      'Led MiniCyber 2024 booth operations at UTP\'s largest annual student event',
+      'Booth raised approximately RM6,000 with strong student traffic'
+    ],
+    icon: 'gamepad',
+    location: 'UTP, Seri Iskandar',
+    teamSize: 15,
+    links: {
+      site: null,
+    },
+    media: {
+      cover: '/media/leadership/convofest-2024-gnc/cover.png',
+      gallery: [],
+    },
+  },
+  {
+    id: 'ldr-014',
+    slug: 'mcf-utp-chess-championship-2024',
+    organization: 'Malaysian Chess Federation (MCF) × Universiti Teknologi PETRONAS',
+    position: 'Assistant Head of Department (AHOD), Ceremony & Protocol',
+    tier: 'rare',
+    featured: true,
+    dateRange: { start: '2024-05', end: '2024-05' },
+    scope: '100+ players, six age categories',
+    description: 'National youth chess championship (May 25–27, 2024) gathering 100+ players across six age categories (Under-8 to Under-18, Open and Girls divisions). As AHOD for Ceremony & Protocol, assisted in running the opening/closing ceremonies and managed the scorekeeping process.',
+    highlights: [
+      'A title-holding leadership role (AHOD) outside esports/tech entirely'
+    ],
+    icon: 'chess-knight',
+    location: 'UTP, Seri Iskandar',
+    teamSize: null,
+    event_type: 'National youth chess championship',
+    links: {
+      site: null,
+    },
+    media: {
+      cover: '/media/leadership/mcf-utp-chess-championship-2024/cover.png',
+      gallery: [],
+    },
+  },
+  {
     id: 'ldr-007',
     slug: 'debat-anti-rasuah-sprm',
     organization: 'SPRM (Suruhanjaya Pencegahan Rasuah Malaysia)',
@@ -149,7 +230,7 @@ export const roles: Role[] = [
     featured: true,
     dateRange: { start: '2024-05', end: '2024-06' },
     scope: 'Nationwide debate tournament',
-    description: 'Managed documentation and communication ensuring smooth execution of a nationwide inter-university Malaysian debate competition organized in partnership with SPRM. Acted as the high-coordination point between organizers and participants.',
+    description: 'Managed documentation and communication ensuring smooth execution of a nationwide inter-university Malaysian debate competition organized in partnership with SPRM. Acted as the high-coordination point between organizers and participants. The competition ran June 7–9, 2024; HICOM duties included managing minutes of meeting and planning sessions throughout.',
     highlights: [
       'Managed all core documentation and schedules for debate tournament',
       'High-coordination point between SPRM, organizers, and university teams'
@@ -162,6 +243,102 @@ export const roles: Role[] = [
     },
     media: {
       cover: '/media/leadership/debat-anti-rasuah-sprm/cover.png',
+      gallery: [],
+    },
+  },
+  {
+    id: 'ldr-008',
+    slug: 'ucis-student-society',
+    organization: 'UCIS Student Society',
+    position: 'Committee Member, Event Management Department',
+    tier: 'common',
+    featured: true,
+    dateRange: { start: '2024-01', end: '2024-12' },
+    scope: null,
+    description: 'Year-long committee involvement in event management for the UCIS Student Society. Also served in the Ceremony and Protocol Department for UTPCC (Jul–Sep 2024).',
+    highlights: [],
+    icon: 'users',
+    location: 'UTP, Seri Iskandar',
+    teamSize: null,
+    links: {
+      site: null,
+    },
+    media: {
+      cover: '/media/leadership/ucis-student-society/cover.png',
+      gallery: [],
+    },
+  },
+  {
+    id: 'ldr-009',
+    slug: 'utp-syntech',
+    organization: 'UTP SYNTECH Organization',
+    position: 'Committee Member, Technical Department',
+    tier: 'common',
+    featured: true,
+    dateRange: { start: '2023-09', end: '2024-12' },
+    scope: '1 year 4 months',
+    description: 'Technical Department committee member across the full stretch, plus a separate Ceremony and Protocol role for an awards event. Assisted the CIS Dean\'s List Award Ceremony (Feb 28, 2024) — coordinated VIP movements throughout the ceremony.',
+    highlights: [
+      'Ceremony & Protocol Committee, CIS Dean\'s List Award Ceremony (Feb 28, 2024) — VIP movement coordination'
+    ],
+    icon: 'cpu',
+    location: 'UTP, Seri Iskandar',
+    teamSize: null,
+    links: {
+      site: null,
+      certificate: '/media/certificates/cis-deans-list-committee.png',
+    },
+    media: {
+      cover: '/media/leadership/utp-syntech/cover.png',
+      gallery: [],
+    },
+  },
+  {
+    id: 'ldr-010',
+    slug: 'mechaspeher-mpu4-community-engagement',
+    organization: 'Universiti Teknologi PETRONAS',
+    position: 'Committee Member, Public Relations',
+    tier: 'common',
+    featured: true,
+    dateRange: { start: '2024-02', end: '2024-09' },
+    scope: null,
+    description: 'Mechaspeher was an MPU4 project introducing primary/secondary school students to digital creativity via green screen technology, delivered Jan 8–9, 2025. As a PR committee member, helped secure sponsorships, then on event days served as Emcee, a facilitator helping students use OBS Studio and CapCut, and ran hands-on green screen recording sessions. The team also completed a Training of Trainers session with Pejabat Pendidikan Daerah (PPD) Hilir Perak beforehand.',
+    highlights: [
+      'Contributed to SDG Goal 4 (Quality Education) through direct student-facing digital-skills facilitation'
+    ],
+    icon: 'megaphone',
+    location: 'Teluk Intan, Perak, Malaysia',
+    teamSize: null,
+    links: {
+      site: null,
+    },
+    media: {
+      cover: '/media/leadership/mechaspeher-mpu4-community-engagement/cover.png',
+      gallery: [],
+    },
+  },
+  {
+    id: 'ldr-013',
+    slug: 'utp-cube-open-2024',
+    organization: 'UTP Chinese Cultural Club (UTPCC), with Malaysia Cube Sports Association (MYCSA) and World Cube Association (WCA)',
+    position: 'Communications Committee Member',
+    tier: 'common',
+    featured: true,
+    dateRange: { start: '2024-09', end: '2024-09' },
+    scope: '50+ participants',
+    description: 'WCA-sanctioned speedcubing competition (Sep 6–8, 2024), drawing 50+ participants from Malaysia and abroad across 3x3x3, 2x2x2, 4x4x4, and blindfolded categories. Pre-event, contacted 50+ companies for sponsorship using a structured proposal/email/call script; on event days, served as a judge/timekeeper.',
+    highlights: [
+      'Direct exposure to corporate sponsorship outreach and official competition judging'
+    ],
+    icon: 'cube',
+    location: 'UTP, Seri Iskandar',
+    teamSize: null,
+    event_type: 'WCA-sanctioned speedcubing competition',
+    links: {
+      site: null,
+    },
+    media: {
+      cover: '/media/leadership/utp-cube-open-2024/cover.png',
       gallery: [],
     },
   },

@@ -8,10 +8,10 @@ import Reveal from '../ui/Reveal';
 
 export default function EducationSection() {
   return (
-    <section id="education" className="w-full py-28 md:py-36">
+    <section id="education" className="w-full py-20 md:py-28">
       <div className="section-shell">
         <div className="max-w-[900px]">
-          <SectionHeader kicker="05 — Education">Education.</SectionHeader>
+          <SectionHeader kicker="06 — Education">Education.</SectionHeader>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {education.map((edu, i) => (

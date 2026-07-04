@@ -58,6 +58,8 @@ export interface Role {
   event_type?: string | null;
   links: {
     site: string | null;
+    /** Local scan under /media/certificates, if this role has one on file */
+    certificate?: string | null;
   };
   media: {
     cover: string | null;
@@ -114,7 +116,32 @@ export interface Certificate {
   dateExpires: string | null;
   credentialId: string | null;
   credentialUrl: string | null;
+  /** Local scan under /media/certificates — opens in a new tab */
+  file: string | null;
   skills: string[];
+}
+
+/** How I was involved in an event (Events section, distinct from Leadership roles) */
+export type EventRole = 'committee' | 'hicom' | 'participant' | 'competitor';
+
+export interface EventEntry {
+  id: string;                // 'evt-XXX'
+  slug: string;
+  name: string;
+  organizer: string;
+  role: EventRole;
+  /** e.g. 'Ceremony & Protocol Committee' or 'Team DANG WANGI' */
+  roleDetail?: string;
+  /** 'YYYY-MM' — empty string when not yet confirmed; render gracefully */
+  date: string;
+  location?: string;
+  summary: string;
+  /** Path under /media/certificates */
+  certificate?: string;
+  media: {
+    cover: string | null;
+    gallery: string[];
+  };
 }
 
 export interface Skill {
